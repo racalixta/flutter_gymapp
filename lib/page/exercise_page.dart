@@ -1,7 +1,22 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gymapp/models/exercise_model.dart';
+import 'package:flutter_gymapp/models/feeling_model.dart';
 
 class ExercisePage extends StatelessWidget {
-  const ExercisePage({super.key});
+  ExercisePage({super.key});
+
+  final ExerciseModel exerciseModel = ExerciseModel(
+      id: 'EX001',
+      name: 'Remada Baixa Supinada',
+      workout: 'Treino A',
+      howToMake: 'Segura a barra e puxa!');
+
+  final List<FeelingModel> listFeeling = [
+    FeelingModel(
+        id: 'FE001', feeling: 'Pouca ativação hoje', data: '2022-02-17'),
+    FeelingModel(
+        id: 'FE002', feeling: 'Melhorou a ativação hoje', data: '2022-02-19'),
+  ];
 
   @override
   Widget build(BuildContext context) {
