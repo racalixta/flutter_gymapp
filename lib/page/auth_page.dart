@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gymapp/_common/my_colors.dart';
 
 class AuthPage extends StatelessWidget {
   const AuthPage({super.key});
@@ -7,23 +8,39 @@ class AuthPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.blue,
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.stretch,
+      body: Stack(
         children: [
-          Image.asset(
-            "assets/dumbbell.png",
-            height: 128,
-          ),
-          const Text(
-            "GymApp",
-            textAlign: TextAlign.center,
-            style: TextStyle(
-              fontSize: 48,
-              fontWeight: FontWeight.bold,
-              color: Colors.white,
+          Container(
+            decoration: const BoxDecoration(
+              gradient: LinearGradient(
+                begin: Alignment.topCenter,
+                end: Alignment.bottomCenter,
+                colors: [
+                  MyColors.azulTopoGradiente,
+                  MyColors.azulBaixoGradiente,
+                ],
+              ),
             ),
-          )
+          ),
+          Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              Image.asset(
+                "assets/dumbbell.png",
+                height: 128,
+              ),
+              const Text(
+                "GymApp",
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  fontSize: 48,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.white,
+                ),
+              )
+            ],
+          ),
         ],
       ),
     );

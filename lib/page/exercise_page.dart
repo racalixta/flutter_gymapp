@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gymapp/_common/my_colors.dart';
 import 'package:flutter_gymapp/models/exercise_model.dart';
 import 'package:flutter_gymapp/models/feeling_model.dart';
 
@@ -37,7 +38,7 @@ class ExercisePage extends StatelessWidget {
             ),
           ]),
           centerTitle: true,
-          backgroundColor: const Color(0xFF0A6D92),
+          backgroundColor: MyColors.azulEscuro,
           elevation: 0,
           toolbarHeight: 72,
           // shape: const RoundedRectangleBorder(
