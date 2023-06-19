@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gymapp/_common/my_colors.dart';
+import 'package:flutter_gymapp/components/decoration_input_auth.dart';
 
 class AuthPage extends StatefulWidget {
   const AuthPage({super.key});
@@ -55,30 +56,27 @@ class _AuthPageState extends State<AuthPage> {
                         height: 32,
                       ),
                       TextFormField(
-                        decoration: const InputDecoration(
-                          label: Text("E-mail"),
-                        ),
+                        decoration: getAuthetincationInputDecoration('E-mail'),
                       ),
+                      const SizedBox(height: 8),
                       TextFormField(
-                        decoration: const InputDecoration(
-                          label: Text("Senha"),
-                        ),
+                        decoration: getAuthetincationInputDecoration('Senha'),
                         obscureText: true,
                       ),
+                      const SizedBox(height: 8),
                       Visibility(
                         visible: !wantEntry,
                         child: Column(
                           children: [
                             TextFormField(
-                              decoration: const InputDecoration(
-                                label: Text("Confirme senha"),
-                              ),
+                              decoration: getAuthetincationInputDecoration(
+                                  'Confirme Senha'),
                               obscureText: true,
                             ),
+                            const SizedBox(height: 8),
                             TextFormField(
-                              decoration: const InputDecoration(
-                                label: Text("Nome"),
-                              ),
+                              decoration:
+                                  getAuthetincationInputDecoration('Nome'),
                             ),
                           ],
                         ),
