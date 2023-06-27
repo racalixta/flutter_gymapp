@@ -11,6 +11,7 @@ class AuthPage extends StatefulWidget {
 
 class _AuthPageState extends State<AuthPage> {
   bool wantEntry = true;
+  final _formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
@@ -33,6 +34,7 @@ class _AuthPageState extends State<AuthPage> {
           Padding(
             padding: const EdgeInsets.all(16.0),
             child: Form(
+              key: _formKey,
               child: Center(
                 child: SingleChildScrollView(
                   child: Column(
@@ -57,11 +59,31 @@ class _AuthPageState extends State<AuthPage> {
                       ),
                       TextFormField(
                         decoration: getAuthetincationInputDecoration('E-mail'),
+                        validator: (String? value) {
+                          if (value == null) {
+                            return 'O campo e-mail não pode ser vazio.';
+                          } else if (value.length < 5) {
+                            return 'O e-mail é muito curto.';
+                          } else if (!value.contains('@')) {
+                            return 'Digite um e-mail válido.';
+                          }
+
+                          return null;
+                        },
                       ),
                       const SizedBox(height: 8),
                       TextFormField(
                         decoration: getAuthetincationInputDecoration('Senha'),
                         obscureText: true,
+                        validator: (String? value) {
+                          if (value == null) {
+                            return 'O campo senha não pode ser vazio.';
+                          } else if (value.length < 6) {
+                            return 'A senha precisa ter mais que 6 digitos.';
+                          }
+
+                          return null;
+                        },
                       ),
                       const SizedBox(height: 8),
                       Visibility(
@@ -72,11 +94,29 @@ class _AuthPageState extends State<AuthPage> {
                               decoration: getAuthetincationInputDecoration(
                                   'Confirme Senha'),
                               obscureText: true,
+                              validator: (String? value) {
+                                if (value == null) {
+                                  return 'O campo confirma senha não pode ser vazio.';
+                                } else if (value.length < 6) {
+                                  return 'A senha precisa ter mais que 6 digitos.';
+                                }
+
+                                return null;
+                              },
                             ),
                             const SizedBox(height: 8),
                             TextFormField(
                               decoration:
                                   getAuthetincationInputDecoration('Nome'),
+                              validator: (String? value) {
+                                if (value == null) {
+                                  return 'O campo nome não pode ser vazio.';
+                                } else if (value.length < 3) {
+                                  return 'O nome precisa ter mais que 3 letras.';
+                                }
+
+                                return null;
+                              },
                             ),
                           ],
                         ),
@@ -85,7 +125,9 @@ class _AuthPageState extends State<AuthPage> {
                         height: 16,
                       ),
                       ElevatedButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          mainButtonCLick();
+                        },
                         child: Text((wantEntry) ? "Entrar" : "Cadastrar"),
                       ),
                       // const Divider(),
@@ -108,5 +150,13 @@ class _AuthPageState extends State<AuthPage> {
         ],
       ),
     );
+  }
+
+  mainButtonCLick() {
+    if (_formKey.currentState!.validate()) {
+      print('form valido');
+    } else {
+      print('form INvalido');
+    }
   }
 }

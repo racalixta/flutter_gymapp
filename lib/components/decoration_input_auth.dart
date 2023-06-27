@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_gymapp/_common/my_colors.dart';
 
 InputDecoration getAuthetincationInputDecoration(String label) {
   return InputDecoration(
@@ -18,6 +17,16 @@ InputDecoration getAuthetincationInputDecoration(String label) {
       borderRadius: BorderRadius.circular(64),
       borderSide:
           const BorderSide(color: Color.fromARGB(255, 1, 142, 207), width: 2),
+    ),
+    errorBorder: OutlineInputBorder(
+      borderRadius: BorderRadius.circular(64),
+      borderSide:
+          const BorderSide(color: Color.fromARGB(255, 230, 0, 0), width: 2),
+    ),
+    focusedErrorBorder: OutlineInputBorder(
+      borderRadius: BorderRadius.circular(64),
+      borderSide:
+          const BorderSide(color: Color.fromARGB(255, 175, 0, 0), width: 2),
     ),
   );
 }
